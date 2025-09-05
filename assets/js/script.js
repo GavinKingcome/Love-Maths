@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     button.addEventListener("click", function () {
       if (this.getAttribute("data-type") === "submit") {
         alert("You clicked Submit!");
-        console.log("Sumit button clicked");
+        console.log("Submit button clicked");
       } else {
         let gameType = this.getAttribute("data-type");
         alert(`You clicked ${gameType}`);
@@ -29,7 +29,15 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-function runGame() {}
+/**
+ * The main game loop, called when the script is first loaded
+ * and after user's response has been processed
+ */
+function runGame() {
+  // Creates random numbers between 1 and 25
+  let num1=Math.floor(Math.random()*25)+1;
+  let num2=Math.floor(Math.random()*25)+1;
+}
 
 function checkAnswer() {}
 
