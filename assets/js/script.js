@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
  * and after user's response has been processed
  */
 function runGame(gameType) {
+  document.getElementById("answer-box").value = "";
   // Creates random numbers between 1 and 25
   let num1 = Math.floor(Math.random() * 25) + 1;
   let num2 = Math.floor(Math.random() * 25) + 1;
@@ -46,7 +47,7 @@ function runGame(gameType) {
   }
 }
 /**
- * Checks the answer against the first element of 
+ * Checks the answer against the first element of
  * the returned calculatedAnswer array
  */
 function checkAnswer() {
@@ -58,9 +59,10 @@ function checkAnswer() {
     incrementScore();
     alert("hey, you got it right!");
   } else {
-    incrementWrongAnswer()
-    alert(`Awww, you answered ${userAnswer}. The correct answer is ${calculatedAnswer[0]}!`);
-
+    incrementWrongAnswer();
+    alert(
+      `Awww, you answered ${userAnswer}. The correct answer is ${calculatedAnswer[0]}!`
+    );
   }
   runGame(calculatedAnswer[1]);
 }
@@ -70,8 +72,8 @@ function checkAnswer() {
  * and calculates the correct answer. */
 
 function calculateCorrectAnswer() {
-  let operand1 = parseInt(document.getElementById('operand1').innerText);
-  let operand2 = parseInt(document.getElementById('operand2').innerText);
+  let operand1 = parseInt(document.getElementById("operand1").innerText);
+  let operand2 = parseInt(document.getElementById("operand2").innerText);
   let operator = document.getElementById("operator").innerText;
 
   if (operator === "+") {
@@ -80,20 +82,22 @@ function calculateCorrectAnswer() {
     alert(`unimplemented operator ${operator}`);
     throw `unimplemented operator ${operator}.Aborting!`;
   }
+}
 
-  }
-
-
+/**
+ * Grts the current score from the DOM and increments in by 1
+ */
 function incrementScore() {
   let currentScore = parseInt(document.getElementById("correct").innerText);
-  currentScore += 1;
+  ++currentScore;
   document.getElementById("correct").textContent = currentScore;
-
 }
 
 function incrementWrongAnswer() {
-  let incorrectAnswer = parseInt(document.getElementById("incorrect").innerText);
-  incorrectAnswer += 1;
+  let incorrectAnswer = parseInt(
+    document.getElementById("incorrect").innerText
+  );
+  incorrectAnswer++;
   document.getElementById("incorrect").textContent = incorrectAnswer;
 }
 
